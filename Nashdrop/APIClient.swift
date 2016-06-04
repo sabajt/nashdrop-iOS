@@ -24,8 +24,12 @@ class APIClient {
         
         if let m = material {
             params[m] = "Y"
+            
+            if m == "residential_furniture_appliances" || m == "residential_trash" || m == "household_hazardous_waste" {
+                params[m] = "Y**"
+            }
         }
-        
+    
         Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
             if response.result.isFailure {
                 let message = self.errorMessageFromResponse(response)

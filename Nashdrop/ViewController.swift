@@ -6,6 +6,9 @@
 //  Copyright © 2016 Code For Nashville. All rights reserved.
 //
 
+
+
+
 import UIKit
 
 class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -13,7 +16,16 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var centers = [RecycleCenter]()
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    
+    func updateCenters(json: [[String: AnyObject]]) {
+        centers = [RecycleCenter]()
+        for center in json {
+            let c = RecycleCenter(jsonDictionary: center)
+            self.centers.append(c)
+        }
+        print("new array count: \(centers.count)")
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +33,25 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.dataSource = self
         
         APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-            
-            self.centers = [RecycleCenter]()
-            for center in json! {
-                let c = RecycleCenter(jsonDictionary: center)
-                self.centers.append(c)
+            if let e = errorMessage {
+                print("Error fetching: \(e)")
+            } else {
+                self.updateCenters(json!)
             }
-            self.tableView.reloadData()
         }
     }
     
     @IBAction func pickMaterial(sender: UIBarButtonItem) {
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMaterials" {
+        
+            if let vc = segue.destinationViewController as? MaterialsVC {
+                vc.materialDelegate = self
+            }
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,4 +72,19 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
+
+extension SearchController: MaterialsDelegate {
+    
+    func updateWithFilteredMaterial(material: String) {
+        
+        APIClient.sharedInstance.getCenters(material) { (errorMessage, json) in
+            if let e = errorMessage {
+                print("Error fetching: \(e)")
+            } else {
+                self.updateCenters(json!)
+            }
+        }
+    }
+    
 }
