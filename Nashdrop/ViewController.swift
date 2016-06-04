@@ -13,17 +13,18 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var centers = [RecycleCenter]()
     
     
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         
-        APIClient.sharedInstance.getCenters { (errorMessage, json) in
+        APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
             
             self.centers = [RecycleCenter]()
             
@@ -41,6 +42,13 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         
     }
+    
+    @IBAction func pickMaterial(sender: UIBarButtonItem) {
+        
+        
+    }
+    
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return centers.count
