@@ -9,6 +9,8 @@
 import Alamofire
 
 class APIClient {
+
+    
     static let sharedInstance = APIClient()
     
     private let appTokenField = "$$app_token"

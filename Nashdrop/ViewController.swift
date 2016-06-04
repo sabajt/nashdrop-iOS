@@ -41,12 +41,12 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
+ 
         
         let center = centers[indexPath.row]
         
         if let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? CentersCellTableViewCell {
-            cell.configureRecyclyingCenter(center)
+            cell.configureRecyclyingCenter(["name":"Nahsville"])
             return cell
         } else {
           return CentersCellTableViewCell()
