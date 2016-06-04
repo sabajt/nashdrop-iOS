@@ -26,39 +26,67 @@ class RecycleCenter {
     var zip: String?
     var phone: String?
     var acceptedItems: String?
+    var lat: String?
+    var long: String?
 
     init(jsonDictionary: [String : AnyObject]) {
-    
-        if let name = jsonDictionary[RecycleCenter.kNameKey] as? String {
-            self.name = name
-        }
         
-        if let address = jsonDictionary[RecycleCenter.kAddressKey] as? String {
-            self.address = address
-        }
-        
-        if let city = jsonDictionary[RecycleCenter.kCityKey] as? String {
-            self.city = city
-        }
-        
-        if let state = jsonDictionary[RecycleCenter.kStateKey] as? String {
-            self.state = state
-        }
-        
-        if let zip = jsonDictionary[RecycleCenter.kZIPKey] as? String {
-            self.zip = zip
-        }
-        
-        if let phone = jsonDictionary[RecycleCenter.kPhoneKey] as? String {
-            self.phone = phone
-        }
+        if kUseGovAPI {
+            
+            if let name = jsonDictionary[RecycleCenter.kNameKey] as? String {
+                self.name = name
+            }
+            
+            if let address = jsonDictionary[RecycleCenter.kAddressKey] as? String {
+                self.address = address
+            }
+            
+            if let city = jsonDictionary[RecycleCenter.kCityKey] as? String {
+                self.city = city
+            }
+            
+            if let state = jsonDictionary[RecycleCenter.kStateKey] as? String {
+                self.state = state
+            }
+            
+            if let zip = jsonDictionary[RecycleCenter.kZIPKey] as? String {
+                self.zip = zip
+            }
+            
+            if let phone = jsonDictionary[RecycleCenter.kPhoneKey] as? String {
+                self.phone = phone
+            }
 
-//        self.name = jsonDictionary[RecycleCenter.kNameKey]
-//        self.address = jsonDictionary[RecycleCenter.kAddressKey]
-//        self.city = jsonDictionary[RecycleCenter.kCityKey]
-//        self.state = jsonDictionary[RecycleCenter.kStateKey]
-//        self.zip = jsonDictionary[RecycleCenter.kZIPKey]
-//        self.phone = jsonDictionary[RecycleCenter.kPhoneKey]
-//        self.acceptedItems = jsonDictionary[RecycleCenter.kAcceptedItemsKey]
+        } else {
+            
+            if let name = jsonDictionary[CustomRecycleCenter.kNameKey] as? String {
+                self.name = name
+            }
+            
+            if let address = jsonDictionary[CustomRecycleCenter.kAddressKey] as? String {
+                self.address = address
+            }
+            
+            if let city = jsonDictionary[CustomRecycleCenter.kCityKey] as? String {
+                self.city = city
+            }
+            
+            if let state = jsonDictionary[CustomRecycleCenter.kStateKey] as? String {
+                self.state = state
+            }
+            
+            if let zip = jsonDictionary[CustomRecycleCenter.kZIPKey] as? String {
+                self.zip = zip
+            }
+            
+            if let lat = jsonDictionary[CustomRecycleCenter.kLatKey] as? String {
+                self.lat = lat
+            }
+            
+            if let long = jsonDictionary[CustomRecycleCenter.kLongKey] as? String {
+                self.long = long
+            }
+
+        }
     }
 }

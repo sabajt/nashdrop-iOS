@@ -19,20 +19,13 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func updateCenters(json: [[String: AnyObject]]) {
         
-        if kUseGovAPI {
-            centers = [RecycleCenter]()
-            for center in json {
-                let c = RecycleCenter(jsonDictionary: center)
-                self.centers.append(c)
-            }
-            print("new array count: \(centers.count)")
-            tableView.reloadData()
-        } else {
-            
-            print("json: \(json)")
-            // use custom recycle center
+        centers = [RecycleCenter]()
+        for center in json {
+            let c = RecycleCenter(jsonDictionary: center)
+            self.centers.append(c)
         }
-        
+        print("new array count: \(centers.count)")
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -40,11 +33,21 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         
-        APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-            if let e = errorMessage {
-                print("Error fetching: \(e)")
-            } else {
-                self.updateCenters(json!)
+        if kUseGovAPI {
+            APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
+                if let e = errorMessage {
+                    print("Error fetching: \(e)")
+                } else {
+                    self.updateCenters(json!)
+                }
+            }
+        } else {
+            CustomAPIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
+                if let e = errorMessage {
+                    print("Error fetching: \(e)")
+                } else {
+                    self.updateCenters(json!)
+                }
             }
         }
     }
