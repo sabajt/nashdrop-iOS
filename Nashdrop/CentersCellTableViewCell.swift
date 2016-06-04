@@ -14,14 +14,11 @@ class CentersCellTableViewCell: UITableViewCell {
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     
-//    var center: Center!
     
     
-    func configureRecyclyingCenter(recycleDict: Dictionary<String,AnyObject>) {
-        if let number = recycleDict["1"] as? Dictionary<String, AnyObject> {
-            if let name = number["name"] as? String {
-                self.nameLbl.text = name
-            }
+    func configureRecyclyingCenter(center: RecycleCenter) {
+        if let name = center.name {
+         nameLbl.text = name
         }
     }
     
