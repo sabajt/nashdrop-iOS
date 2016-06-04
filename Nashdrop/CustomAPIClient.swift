@@ -13,24 +13,15 @@ class CustomAPIClient {
     
     static let sharedInstance = CustomAPIClient()
     
-//    private let appTokenField = "$$app_token"
-//    private let appToken = "SdrO1c71wKZPDVbTsomCAiv8H"
     private let baseURLString = "http://nashdrop.herokuapp.com/search/"
     
     func getCenters(material: String?, completion: (errorMessage: String?, json: [[String: AnyObject]]?) -> Void) {
         
-        let urlString = baseURLString
-//        var params = [appTokenField: appToken]
+        var urlString = baseURLString
+        if let m = material {
+            urlString += m
+        }
         
-//        if let m = material {
-//            params[m] = "Y"
-//            
-//            if m == "residential_furniture_appliances" || m == "residential_trash" || m == "household_hazardous_waste" {
-//                params[m] = "Y**"
-//            }
-//        }
-        
-//        Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
         Alamofire.request(.GET, urlString, parameters: nil).validate().responseJSON { response in
 
             if response.result.isFailure {
@@ -40,14 +31,12 @@ class CustomAPIClient {
                 return
             }
             
-//            guard let data = response.result.value as? [[String: AnyObject]] else {
-//                print("failure")
-//                return
-//            }
+            guard let data = response.result.value as? [[String: AnyObject]] else {
+                print("failure")
+                return
+            }
             
-            print(response)
-            
-            completion(errorMessage: nil, json: [["stuff" : "things"]])
+            completion(errorMessage: nil, json: data)
         }
     }
     

@@ -18,13 +18,21 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var tableView: UITableView!
     
     func updateCenters(json: [[String: AnyObject]]) {
-        centers = [RecycleCenter]()
-        for center in json {
-            let c = RecycleCenter(jsonDictionary: center)
-            self.centers.append(c)
+        
+        if kUseGovAPI {
+            centers = [RecycleCenter]()
+            for center in json {
+                let c = RecycleCenter(jsonDictionary: center)
+                self.centers.append(c)
+            }
+            print("new array count: \(centers.count)")
+            tableView.reloadData()
+        } else {
+            
+            print("json: \(json)")
+            // use custom recycle center
         }
-        print("new array count: \(centers.count)")
-        tableView.reloadData()
+        
     }
 
     override func viewDidLoad() {
@@ -78,11 +86,21 @@ extension SearchController: MaterialsDelegate {
     
     func updateWithFilteredMaterial(material: String) {
         
-        APIClient.sharedInstance.getCenters(material) { (errorMessage, json) in
-            if let e = errorMessage {
-                print("Error fetching: \(e)")
-            } else {
-                self.updateCenters(json!)
+        if kUseGovAPI {
+            APIClient.sharedInstance.getCenters(material) { (errorMessage, json) in
+                if let e = errorMessage {
+                    print("Error fetching: \(e)")
+                } else {
+                    self.updateCenters(json!)
+                }
+            }
+        } else {
+            CustomAPIClient.sharedInstance.getCenters(material){ (errorMessage, json) in
+                if let e = errorMessage {
+                    print("Error fetching: \(e)")
+                } else {
+                    self.updateCenters(json!)
+                }
             }
         }
     }

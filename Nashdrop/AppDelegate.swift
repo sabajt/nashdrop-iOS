@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kUseGovAPI = false
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        CustomAPIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-            //
-        }
+//        CustomAPIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
+//            <#code#>
+//        }
         
         return true
     }

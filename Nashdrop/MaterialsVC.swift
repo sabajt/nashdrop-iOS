@@ -33,14 +33,14 @@ class MaterialsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let b = navigationController?.navigationItem.backBarButtonItem {
-            print("yeeeeeee: \(b)")
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+//            print("yeeeeeee: \(b)")
 
-        }
+//        }
         
-        if let b = navigationItem.backBarButtonItem {
-            print("yeeeeeee: \(b)")
-        }
+//        if let b = navigationItem.backBarButtonItem {
+//            print("yeeeeeee: \(b)")
+//        }
     }
     
     
@@ -63,18 +63,34 @@ class MaterialsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let m = materials[indexPath.row]
-        let materialsMap = [
-            "Plastic" : "plastics_1_7",
-            "Cardboard" : "cardboard_newspaper_mixed_paper",
-            "Glass" : "glass_bottles_clear_green_brown",
-            "Brush" : "residential_brush_leaves",
-            "Appliances" : "residential_furniture_appliances",
-            "Trash" : "residential_trash",
-            "Metal" : "aluminum_metal_tin_cans",
-            "Hazardous" : "household_hazardous_waste",
-        ]
+        var materialsMap = ["":""]
+        
+        if kUseGovAPI {
+            materialsMap = [
+                "Plastic" : "plastics_1_7",
+                "Cardboard" : "cardboard_newspaper_mixed_paper",
+                "Glass" : "glass_bottles_clear_green_brown",
+                "Brush" : "residential_brush_leaves",
+                "Appliances" : "residential_furniture_appliances",
+                "Trash" : "residential_trash",
+                "Metal" : "aluminum_metal_tin_cans",
+                "Hazardous" : "household_hazardous_waste",
+            ]
+        } else {
+            materialsMap = [
+                "Plastic" : "plastic",
+                "Cardboard" : "cardboard",
+                "Glass" : "glass",
+                "Brush" : "brush",
+                "Appliances" : "appliances",
+                "Trash" : "trash",
+                "Metal" : "metal",
+                "Hazardous" : "hazardous",
+            ]
+        }
         
         let queryParam = materialsMap[m]
+        
         materialDelegate?.updateWithFilteredMaterial(queryParam!)
         
         navigationController?.popViewControllerAnimated(true)
