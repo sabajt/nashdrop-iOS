@@ -11,7 +11,7 @@ import Foundation
 class RecycleCenterController {
 
     static func searchRecycleCentersByAcceptedItems(recycleCenter: String, completion: (recycleCenters: [RecycleCenter]) -> Void) {
-        let url = NetworkController.searchURLByRecycleCenters(<#T##acceptedItems: String##String#>)
+        let url = NetworkController.searchURLByRecycleCenters("Bananas and Plastic")
         NetworkController.dataAtURL(url) { (resultData) -> Void in
             guard let recycleCenterData = resultData  else {
                 print("NO DATA RETURNED")
