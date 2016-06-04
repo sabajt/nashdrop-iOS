@@ -52,8 +52,7 @@ class RecycleCenter {
         if let phone = jsonDictionary[RecycleCenter.kPhoneKey] as? String {
             self.phone = phone
         }
-        
-        
+
 //        self.name = jsonDictionary[RecycleCenter.kNameKey]
 //        self.address = jsonDictionary[RecycleCenter.kAddressKey]
 //        self.city = jsonDictionary[RecycleCenter.kCityKey]
