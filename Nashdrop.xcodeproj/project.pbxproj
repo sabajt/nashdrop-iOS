@@ -74,8 +74,7 @@
 				33C2F9761D032D03005E1916 /* LaunchScreen.storyboard */,
 				33C2F9791D032D03005E1916 /* Info.plist */,
 				974BECF31D033CFB0093CE28 /* RecycleCenter.swift */,
-				974BECF51D033FB00093CE28 /* RecycleCenterController.swift */,
-				974BECF71D0340B50093CE28 /* NetworkController.swift */,
+				974BECF91D0347E20093CE28 /* Experiments */,
 			);
 			path = Nashdrop;
 			sourceTree = "<group>";
@@ -87,6 +86,15 @@
 				3627298167174D649CB57AAE /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		974BECF91D0347E20093CE28 /* Experiments */ = {
+			isa = PBXGroup;
+			children = (
+				974BECF51D033FB00093CE28 /* RecycleCenterController.swift */,
+				974BECF71D0340B50093CE28 /* NetworkController.swift */,
+			);
+			name = Experiments;
 			sourceTree = "<group>";
 		};
 		E0ED7B85642BB8CC6CC78D7E /* Frameworks */ = {
