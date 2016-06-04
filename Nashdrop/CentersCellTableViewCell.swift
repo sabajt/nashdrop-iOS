@@ -13,7 +13,7 @@ class CentersCellTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var cityLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
-    
+
     func configureRecyclyingCenter(center: RecycleCenter) {
         
         if let name = center.name {
@@ -30,7 +30,7 @@ class CentersCellTableViewCell: UITableViewCell {
             addressLbl.text = address
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
