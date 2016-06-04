@@ -17,9 +17,14 @@ class APIClient {
     private let appToken = "SdrO1c71wKZPDVbTsomCAiv8H"
     private let baseURLString = "https://data.nashville.gov/resource/9d2e-48mm"
     
-    func getCenters(completion: (errorMessage: String?, json: [[String: AnyObject]]?) -> Void) {
+    func getCenters(material: String?, completion: (errorMessage: String?, json: [[String: AnyObject]]?) -> Void) {
+        
         let urlString = baseURLString
-        let params = [appTokenField: appToken]
+        var params = [appTokenField: appToken]
+        
+        if let m = material {
+            params[m] = "Y"
+        }
         
         Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
             if response.result.isFailure {

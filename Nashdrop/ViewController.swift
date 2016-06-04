@@ -19,17 +19,22 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        APIClient.sharedInstance.getCenters { (errorMessage, json) in
+        
+        APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
+            
             self.centers = [RecycleCenter]()
             for center in json! {
                 let c = RecycleCenter(jsonDictionary: center)
                 self.centers.append(c)
             }
             self.tableView.reloadData()
-//            print(self.centers)
         }
     }
-
+    
+    @IBAction func pickMaterial(sender: UIBarButtonItem) {
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return centers.count
     }
