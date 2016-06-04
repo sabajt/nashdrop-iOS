@@ -15,6 +15,9 @@
 		33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2F97F1D0336E0005E1916 /* APIClient.swift */; };
 		5A32DCF61D0336B000069C08 /* CentersCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32DCF51D0336B000069C08 /* CentersCellTableViewCell.swift */; };
 		83EF63FAE24D8E023B4BE93A /* Pods_Nashdrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D3E00EA9824E05E9A05C45 /* Pods_Nashdrop.framework */; };
+		974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF31D033CFB0093CE28 /* RecycleCenter.swift */; };
+		974BECF61D033FB00093CE28 /* RecycleCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF51D033FB00093CE28 /* RecycleCenterController.swift */; };
+		974BECF81D0340B50093CE28 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF71D0340B50093CE28 /* NetworkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		99D3E00EA9824E05E9A05C45 /* Pods_Nashdrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nashdrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FF04150A62F081607903C /* Pods-Nashdrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.release.xcconfig"; sourceTree = "<group>"; };
 		E1A5FF3568CFB93B6227E026 /* Pods-Nashdrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.debug.xcconfig"; sourceTree = "<group>"; };
+		974BECF31D033CFB0093CE28 /* RecycleCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenter.swift; sourceTree = "<group>"; };
+		974BECF51D033FB00093CE28 /* RecycleCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenterController.swift; sourceTree = "<group>"; };
+		974BECF71D0340B50093CE28 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 				33C2F9761D032D03005E1916 /* LaunchScreen.storyboard */,
 				33C2F9791D032D03005E1916 /* Info.plist */,
 				5A32DCF51D0336B000069C08 /* CentersCellTableViewCell.swift */,
+				974BECF31D033CFB0093CE28 /* RecycleCenter.swift */,
+				974BECF91D0347E20093CE28 /* Experiments */,
 				33C2F97F1D0336E0005E1916 /* APIClient.swift */,
 			);
 			path = Nashdrop;
@@ -92,10 +100,20 @@
 			children = (
 				E1A5FF3568CFB93B6227E026 /* Pods-Nashdrop.debug.xcconfig */,
 				CA0FF04150A62F081607903C /* Pods-Nashdrop.release.xcconfig */,
-			);
+				);
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		974BECF91D0347E20093CE28 /* Experiments */ = {
+			isa = PBXGroup;
+			children = (
+				974BECF51D033FB00093CE28 /* RecycleCenterController.swift */,
+				974BECF71D0340B50093CE28 /* NetworkController.swift */,
+			);
+			name = Experiments;
+			sourceTree = "<group>";
+		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +237,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A32DCF61D0336B000069C08 /* CentersCellTableViewCell.swift in Sources */,
+				974BECF81D0340B50093CE28 /* NetworkController.swift in Sources */,
+				974BECF61D033FB00093CE28 /* RecycleCenterController.swift in Sources */,
+				974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */,
 				33C2F9701D032D03005E1916 /* ViewController.swift in Sources */,
 				33C2F96E1D032D03005E1916 /* AppDelegate.swift in Sources */,
 				33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */,
