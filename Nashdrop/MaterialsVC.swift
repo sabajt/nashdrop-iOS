@@ -30,6 +30,19 @@ class MaterialsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let b = navigationController?.navigationItem.backBarButtonItem {
+            print("yeeeeeee: \(b)")
+
+        }
+        
+        if let b = navigationItem.backBarButtonItem {
+            print("yeeeeeee: \(b)")
+        }
+    }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return materials.count
