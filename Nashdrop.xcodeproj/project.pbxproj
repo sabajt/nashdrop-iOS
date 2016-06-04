@@ -12,10 +12,11 @@
 		33C2F9731D032D03005E1916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C2F9711D032D03005E1916 /* Main.storyboard */; };
 		33C2F9751D032D03005E1916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C2F9741D032D03005E1916 /* Assets.xcassets */; };
 		33C2F9781D032D03005E1916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C2F9761D032D03005E1916 /* LaunchScreen.storyboard */; };
-		4504EA2D9BB3DA1053442C39 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E76ACF11E7E59DFC00652D /* Pods.framework */; };
 		974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF31D033CFB0093CE28 /* RecycleCenter.swift */; };
 		974BECF61D033FB00093CE28 /* RecycleCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF51D033FB00093CE28 /* RecycleCenterController.swift */; };
 		974BECF81D0340B50093CE28 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF71D0340B50093CE28 /* NetworkController.swift */; };
+		33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2F97F1D0336E0005E1916 /* APIClient.swift */; };
+		4504EA2D9BB3DA1053442C39 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E76ACF11E7E59DFC00652D /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,10 +28,11 @@
 		33C2F9741D032D03005E1916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33C2F9771D032D03005E1916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33C2F9791D032D03005E1916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3627298167174D649CB57AAE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		974BECF31D033CFB0093CE28 /* RecycleCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenter.swift; sourceTree = "<group>"; };
 		974BECF51D033FB00093CE28 /* RecycleCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenterController.swift; sourceTree = "<group>"; };
 		974BECF71D0340B50093CE28 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		33C2F97F1D0336E0005E1916 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3627298167174D649CB57AAE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A4F5F3F4C7A249982EE94AC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				33C2F9791D032D03005E1916 /* Info.plist */,
 				974BECF31D033CFB0093CE28 /* RecycleCenter.swift */,
 				974BECF91D0347E20093CE28 /* Experiments */,
+				33C2F97F1D0336E0005E1916 /* APIClient.swift */,
 			);
 			path = Nashdrop;
 			sourceTree = "<group>";
@@ -229,9 +232,10 @@
 			files = (
 				974BECF81D0340B50093CE28 /* NetworkController.swift in Sources */,
 				974BECF61D033FB00093CE28 /* RecycleCenterController.swift in Sources */,
+				974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */,
 				33C2F9701D032D03005E1916 /* ViewController.swift in Sources */,
 				33C2F96E1D032D03005E1916 /* AppDelegate.swift in Sources */,
-				974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */,
+				33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
