@@ -33,6 +33,9 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
         if kUseGovAPI {
             APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
                 if let e = errorMessage {
