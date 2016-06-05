@@ -14,6 +14,7 @@ import UIKit
 class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var centers = [RecycleCenter]()
+    var selectedCenter: RecycleCenter? = nil
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -65,6 +66,14 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if let vc = segue.destinationViewController as? MaterialsVC {
                 vc.materialDelegate = self
             }
+//        } else if segue.identifier == "ToDetail" {
+//            
+//            if let vc = segue.destinationViewController as? DetailTableViewController {
+//                if let s = selectedCenter {
+//                    vc.recycleCenter = s
+//                }
+//            }
+            
         }
     }
     
@@ -81,6 +90,16 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         } else {
         }
         return cell!
+    }
+    
+//    func table
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let center = centers[indexPath.row]
+        let vc = DetailTableViewController()
+        vc.recycleCenter = center
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
