@@ -25,7 +25,7 @@ class DetailTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 4
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -43,25 +43,25 @@ class DetailTableViewController: UITableViewController {
 
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "Address: " + recycleCenter.address!
+            cell.textLabel?.text = recycleCenter.address!
             return cell
 
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "City: " + recycleCenter.city!
+            cell.textLabel?.text = "\(recycleCenter.city!), \(recycleCenter.state!) \(recycleCenter.zip!)"
             return cell
+
+//        case 3:
+//            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
+//            cell.textLabel?.text = "State: " + recycleCenter.state!
+//            return cell
+//
+//        case 4:
+//            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
+//            cell.textLabel?.text = "ZIP: " + recycleCenter.zip!
+//            return cell
 
         case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "State: " + recycleCenter.state!
-            return cell
-
-        case 4:
-            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
-            cell.textLabel?.text = "ZIP: " + recycleCenter.zip!
-            return cell
-
-        case 5:
             let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath)
             cell.textLabel?.text = "Phone: " + recycleCenter.phone!
             return cell
@@ -75,9 +75,9 @@ class DetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 80
+            return 30
         default:
-            return 50
+            return 30
         }
     }
 }

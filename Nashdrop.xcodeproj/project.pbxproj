@@ -17,7 +17,7 @@
 		33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2F97F1D0336E0005E1916 /* APIClient.swift */; };
 		5A32DCF61D0336B000069C08 /* CentersCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32DCF51D0336B000069C08 /* CentersCellTableViewCell.swift */; };
 		5A32DCF81D03782A00069C08 /* MaterialsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32DCF71D03782A00069C08 /* MaterialsVC.swift */; };
-		83EF63FAE24D8E023B4BE93A /* Pods_Nashdrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D3E00EA9824E05E9A05C45 /* Pods_Nashdrop.framework */; };
+		87A5FFB692BA3F991428109B /* Pods_Nashdrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2C6E6A44603A9EB5E36E65 /* Pods_Nashdrop.framework */; };
 		974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF31D033CFB0093CE28 /* RecycleCenter.swift */; };
 		974BECF61D033FB00093CE28 /* RecycleCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF51D033FB00093CE28 /* RecycleCenterController.swift */; };
 		974BECF81D0340B50093CE28 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974BECF71D0340B50093CE28 /* NetworkController.swift */; };
@@ -36,15 +36,15 @@
 		33C2F9771D032D03005E1916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33C2F9791D032D03005E1916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C2F97F1D0336E0005E1916 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		42FF9A4A94E22577BB557C84 /* Pods-Nashdrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.debug.xcconfig"; sourceTree = "<group>"; };
 		5A32DCF51D0336B000069C08 /* CentersCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentersCellTableViewCell.swift; sourceTree = "<group>"; };
 		5A32DCF71D03782A00069C08 /* MaterialsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsVC.swift; sourceTree = "<group>"; };
+		5F2C6E6A44603A9EB5E36E65 /* Pods_Nashdrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nashdrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		974BECF31D033CFB0093CE28 /* RecycleCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenter.swift; sourceTree = "<group>"; };
 		974BECF51D033FB00093CE28 /* RecycleCenterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleCenterController.swift; sourceTree = "<group>"; };
 		974BECF71D0340B50093CE28 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		977381D31D0370E00089C5E9 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
-		99D3E00EA9824E05E9A05C45 /* Pods_Nashdrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nashdrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA0FF04150A62F081607903C /* Pods-Nashdrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.release.xcconfig"; sourceTree = "<group>"; };
-		E1A5FF3568CFB93B6227E026 /* Pods-Nashdrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.debug.xcconfig"; sourceTree = "<group>"; };
+		DF160987DE0A4D6479CF11CE /* Pods-Nashdrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nashdrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EF63FAE24D8E023B4BE93A /* Pods_Nashdrop.framework in Frameworks */,
+				87A5FFB692BA3F991428109B /* Pods_Nashdrop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 				33C2F96C1D032D03005E1916 /* Nashdrop */,
 				33C2F96B1D032D03005E1916 /* Products */,
 				E0ED7B85642BB8CC6CC78D7E /* Frameworks */,
-				FD70F56722A98E8759328866 /* Pods */,
+				DC1A1189A5C8EC4C45AB8804 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,22 +107,22 @@
 			name = Experiments;
 			sourceTree = "<group>";
 		};
+		DC1A1189A5C8EC4C45AB8804 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A4A94E22577BB557C84 /* Pods-Nashdrop.debug.xcconfig */,
+				DF160987DE0A4D6479CF11CE /* Pods-Nashdrop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E0ED7B85642BB8CC6CC78D7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				18E76ACF11E7E59DFC00652D /* Pods.framework */,
-				99D3E00EA9824E05E9A05C45 /* Pods_Nashdrop.framework */,
+				5F2C6E6A44603A9EB5E36E65 /* Pods_Nashdrop.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FD70F56722A98E8759328866 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E1A5FF3568CFB93B6227E026 /* Pods-Nashdrop.debug.xcconfig */,
-				CA0FF04150A62F081607903C /* Pods-Nashdrop.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +138,6 @@
 				33C2F9681D032D03005E1916 /* Resources */,
 				C162007441A98E60969F5C23 /* 📦 Embed Pods Frameworks */,
 				A84617E5136AA047619594D4 /* 📦 Copy Pods Resources */,
-				598ADCABC8C1A50736D3C115 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,21 +195,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		598ADCABC8C1A50736D3C115 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		855A5B0BE04AEA03338239BA /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,7 +368,7 @@
 		};
 		33C2F97D1D032D03005E1916 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1A5FF3568CFB93B6227E026 /* Pods-Nashdrop.debug.xcconfig */;
+			baseConfigurationReference = 42FF9A4A94E22577BB557C84 /* Pods-Nashdrop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nashdrop/Info.plist;
@@ -396,7 +380,7 @@
 		};
 		33C2F97E1D032D03005E1916 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA0FF04150A62F081607903C /* Pods-Nashdrop.release.xcconfig */;
+			baseConfigurationReference = DF160987DE0A4D6479CF11CE /* Pods-Nashdrop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nashdrop/Info.plist;
