@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 let kUseGovAPI = true
 
@@ -15,13 +16,12 @@ let kUseGovAPI = true
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let mapsApiKey = "AIzaSyDt-QOCvCH6g_qEIiVPLNMe3_ts_9I1vDk"
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
-//        CustomAPIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-//            <#code#>
-//        }
+
+        GMSServices.provideAPIKey(mapsApiKey)
         
         return true
     }

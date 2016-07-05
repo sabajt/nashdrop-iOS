@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33097F7F1D2C7CAF0004BB1B /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33097F7E1D2C7CAF0004BB1B /* MainMapViewController.swift */; };
 		33B625621D038B2B0063D6F0 /* CustomAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B625611D038B2B0063D6F0 /* CustomAPIClient.swift */; };
 		33B625641D0396850063D6F0 /* CustomRecycleCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B625631D0396850063D6F0 /* CustomRecycleCenter.swift */; };
 		33C2F96E1D032D03005E1916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C2F96D1D032D03005E1916 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		18E76ACF11E7E59DFC00652D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33097F7E1D2C7CAF0004BB1B /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		33B625611D038B2B0063D6F0 /* CustomAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAPIClient.swift; sourceTree = "<group>"; };
 		33B625631D0396850063D6F0 /* CustomRecycleCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRecycleCenter.swift; sourceTree = "<group>"; };
 		33C2F96A1D032D03005E1916 /* Nashdrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nashdrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				5A32DCF71D03782A00069C08 /* MaterialsVC.swift */,
 				33B625611D038B2B0063D6F0 /* CustomAPIClient.swift */,
 				33B625631D0396850063D6F0 /* CustomRecycleCenter.swift */,
+				33097F7E1D2C7CAF0004BB1B /* MainMapViewController.swift */,
 			);
 			path = Nashdrop;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 				33C2F9681D032D03005E1916 /* Resources */,
 				C162007441A98E60969F5C23 /* 📦 Embed Pods Frameworks */,
 				A84617E5136AA047619594D4 /* 📦 Copy Pods Resources */,
+				7FD0F32AD8BC7ACAFB4DB529 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,6 +199,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7FD0F32AD8BC7ACAFB4DB529 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nashdrop/Pods-Nashdrop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		855A5B0BE04AEA03338239BA /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +273,7 @@
 				974BECF41D033CFB0093CE28 /* RecycleCenter.swift in Sources */,
 				977381D41D0370E00089C5E9 /* DetailTableViewController.swift in Sources */,
 				33C2F9701D032D03005E1916 /* ViewController.swift in Sources */,
+				33097F7F1D2C7CAF0004BB1B /* MainMapViewController.swift in Sources */,
 				33C2F96E1D032D03005E1916 /* AppDelegate.swift in Sources */,
 				33C2F9801D0336E0005E1916 /* APIClient.swift in Sources */,
 				33B625621D038B2B0063D6F0 /* CustomAPIClient.swift in Sources */,

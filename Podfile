@@ -4,5 +4,6 @@ use_frameworks!
 target ’Nashdrop' do
 
   pod 'Alamofire', '~> 3.3'
+  pod 'GoogleMaps'
 
 end
