@@ -43,6 +43,7 @@ class APIClient {
                 return
             }
             
+            print("data: \(data)")
             completion(errorMessage: nil, json: data)
         }
     }

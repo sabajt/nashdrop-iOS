@@ -6,17 +6,42 @@
 //  Copyright © 2016 Code For Nashville. All rights reserved.
 //
 
-
-
-
 import UIKit
 
 class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     var centers = [RecycleCenter]()
     var selectedCenter: RecycleCenter? = nil
 
     @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let tbc = tabBarController {
+            tbc.delegate = self
+        }
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
+        updateWithFilteredMaterial(nil)
+    }
+    
+    @IBAction func pickMaterial(sender: UIBarButtonItem) {
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMaterials" {
+            if let vc = segue.destinationViewController as? MaterialsVC {
+                vc.materialDelegate = self
+            }
+        }
+    }
     
     func updateCenters(json: [[String: AnyObject]]) {
         
@@ -25,56 +50,9 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let c = RecycleCenter(jsonDictionary: center)
             self.centers.append(c)
         }
-        print("new array count: \(centers.count)")
         tableView.reloadData()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
-        
-        if kUseGovAPI {
-            APIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-                if let e = errorMessage {
-                    print("Error fetching: \(e)")
-                } else {
-                    self.updateCenters(json!)
-                }
-            }
-        } else {
-            CustomAPIClient.sharedInstance.getCenters(nil) { (errorMessage, json) in
-                if let e = errorMessage {
-                    print("Error fetching: \(e)")
-                } else {
-                    self.updateCenters(json!)
-                }
-            }
-        }
-    }
-    
-    @IBAction func pickMaterial(sender: UIBarButtonItem) {
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showMaterials" {
-        
-            if let vc = segue.destinationViewController as? MaterialsVC {
-                vc.materialDelegate = self
-            }
-//        } else if segue.identifier == "ToDetail" {
-//            
-//            if let vc = segue.destinationViewController as? DetailTableViewController {
-//                if let s = selectedCenter {
-//                    vc.recycleCenter = s
-//                }
-//            }
-            
-        }
+        NSNotificationCenter.defaultCenter().postNotificationName(NashDropNotifications.CentersUpdated, object: centers, userInfo: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,8 +70,6 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell!
     }
     
-//    func table
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let center = centers[indexPath.row]
@@ -109,8 +85,9 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 extension SearchController: MaterialsDelegate {
     
-    func updateWithFilteredMaterial(material: String) {
+    func updateWithFilteredMaterial(material: String?) {
         
+        // TODO: Make an adapter or the client generic.
         if kUseGovAPI {
             APIClient.sharedInstance.getCenters(material) { (errorMessage, json) in
                 if let e = errorMessage {
@@ -129,5 +106,23 @@ extension SearchController: MaterialsDelegate {
             }
         }
     }
+}
+
+extension SearchController: UITabBarControllerDelegate {
     
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        if let mapVC = viewController as? MainMapViewController {
+            mapVC.delegate = self
+        }
+        
+        return true
+    }
+}
+
+extension SearchController: MapViewControllerDelegate {
+    
+    func fetchedCenters() -> [RecycleCenter] {
+        return centers
+    }
 }

@@ -10,14 +10,26 @@ import Foundation
 
 class RecycleCenter {
 
-    static let kNameKey = "facility_name"
-    static let kAddressKey = "mapped_location_address"
-    static let kCityKey = "mapped_location_city"
-    static let kStateKey = "mapped_location_state"
-    static let kZIPKey = "mapped_location_zip"
-    static let kAcceptedItemsKey = "acceptedItems"
-    static let kPhoneKey = "phone"
-    static let kResultsKey = "results"
+    private let govNameKey = "facility_name"
+    private let govAddressKey = "mapped_location_address"
+    private let govCityKey = "mapped_location_city"
+    private let govStateKey = "mapped_location_state"
+    private let govZIPKey = "mapped_location_zip"
+    private let govAcceptedItemsKey = "acceptedItems"
+    private let govPhoneKey = "phone"
+    private let govResultsKey = "results"
+    private let govLocationKey = "mapped_location"
+    private let govCoordinatesKey = "coordinates"
+    
+    private let customNameKey = "name"
+    private let customAddressKey = "address"
+    private let customCityKey = "city"
+    private let customStateKey = "state"
+    private let customZIPKey = "zip"
+    private let customAcceptedItemsKey = "acceptedItems"
+    private let customResultsKey = "results"
+    private let customLatKey = "lat"
+    private let customLongKey = "long"
 
     var name: String?
     var address: String?
@@ -26,67 +38,32 @@ class RecycleCenter {
     var zip: String?
     var phone: String?
     var acceptedItems: String?
-    var lat: String?
-    var long: String?
-
+    var lat: Double?
+    var long: Double?
+    
     init(jsonDictionary: [String : AnyObject]) {
-        
+    
         if kUseGovAPI {
+            self.name = (jsonDictionary[govNameKey] as? String) ?? nil
+            self.address = (jsonDictionary[govAddressKey] as? String) ?? nil
+            self.city = (jsonDictionary[govCityKey] as? String) ?? nil
+            self.state = (jsonDictionary[govStateKey] as? String) ?? nil
+            self.zip = (jsonDictionary[govZIPKey] as? String) ?? nil
+            self.phone = (jsonDictionary[govPhoneKey] as? String) ?? nil
             
-            if let name = jsonDictionary[RecycleCenter.kNameKey] as? String {
-                self.name = name
+            if let mappedLocation = jsonDictionary[govLocationKey]?[govCoordinatesKey] as? [Double] {
+                self.lat = mappedLocation[1]
+                self.long = mappedLocation[0]
             }
             
-            if let address = jsonDictionary[RecycleCenter.kAddressKey] as? String {
-                self.address = address
-            }
-            
-            if let city = jsonDictionary[RecycleCenter.kCityKey] as? String {
-                self.city = city
-            }
-            
-            if let state = jsonDictionary[RecycleCenter.kStateKey] as? String {
-                self.state = state
-            }
-            
-            if let zip = jsonDictionary[RecycleCenter.kZIPKey] as? String {
-                self.zip = zip
-            }
-            
-            if let phone = jsonDictionary[RecycleCenter.kPhoneKey] as? String {
-                self.phone = phone
-            }
-
         } else {
-            
-            if let name = jsonDictionary[CustomRecycleCenter.kNameKey] as? String {
-                self.name = name
-            }
-            
-            if let address = jsonDictionary[CustomRecycleCenter.kAddressKey] as? String {
-                self.address = address
-            }
-            
-            if let city = jsonDictionary[CustomRecycleCenter.kCityKey] as? String {
-                self.city = city
-            }
-            
-            if let state = jsonDictionary[CustomRecycleCenter.kStateKey] as? String {
-                self.state = state
-            }
-            
-            if let zip = jsonDictionary[CustomRecycleCenter.kZIPKey] as? String {
-                self.zip = zip
-            }
-            
-            if let lat = jsonDictionary[CustomRecycleCenter.kLatKey] as? String {
-                self.lat = lat
-            }
-            
-            if let long = jsonDictionary[CustomRecycleCenter.kLongKey] as? String {
-                self.long = long
-            }
-
+            self.name = (jsonDictionary[customNameKey] as? String) ?? nil
+            self.address = (jsonDictionary[customAddressKey] as? String) ?? nil
+            self.city = (jsonDictionary[customCityKey] as? String) ?? nil
+            self.state = (jsonDictionary[customStateKey] as? String) ?? nil
+            self.zip = (jsonDictionary[customZIPKey] as? String) ?? nil
+            self.lat = (jsonDictionary[customLatKey] as? Double) ?? nil
+            self.long = (jsonDictionary[customLongKey] as? Double) ?? nil
         }
     }
 }

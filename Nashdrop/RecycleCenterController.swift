@@ -20,7 +20,7 @@ class RecycleCenterController {
             }
             do {
                 let resultsDictionary = try NSJSONSerialization.JSONObjectWithData(recycleCenterData, options: NSJSONReadingOptions.AllowFragments) as! [String : AnyObject]
-                let recycleCenterDictionaries = resultsDictionary[RecycleCenter.kResultsKey] as! [[String: String]]
+                let recycleCenterDictionaries = resultsDictionary["results"] as! [[String: String]]
                 var arrayOfRecycleCenterModelObjects: [RecycleCenter] = []
                 for dictionary in recycleCenterDictionaries {
                     let ctr = RecycleCenter(jsonDictionary: dictionary)

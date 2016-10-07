@@ -10,7 +10,7 @@ import UIKit
 
 protocol MaterialsDelegate: class {
     
-    func updateWithFilteredMaterial(material: String)
+    func updateWithFilteredMaterial(material: String?)
 }
 
 class MaterialsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
