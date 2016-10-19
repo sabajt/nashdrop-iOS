@@ -6,7 +6,7 @@
 //  Copyright © 2016 Code For Nashville. All rights reserved.
 //
 
-import Alamofire
+import Foundation
 
 class APIClient {
 
@@ -24,37 +24,51 @@ class APIClient {
         
         if let m = material {
             params[m] = "Y"
-            
             if m == "residential_furniture_appliances" || m == "residential_trash" || m == "household_hazardous_waste" {
                 params[m] = "Y**"
             }
         }
-    
-        Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
-            if response.result.isFailure {
-                let message = self.errorMessageFromResponse(response)
-                print("failure message: \(message)")
-                completion(errorMessage: message, json: nil)
-                return
-            }
+        
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        
+        let task = session.dataTaskWithURL(NSURL(string: urlString)!) { (data, response, error) in
             
-            guard let data = response.result.value as? [[String: AnyObject]] else {
-                print("failure")
-                return
+            if let data = data {
+                let r = NSString(data: data, encoding: NSUTF8StringEncoding)
+                print(r)
             }
-            
-            print("data: \(data)")
-            completion(errorMessage: nil, json: data)
+            completion(errorMessage: nil, json: nil)
         }
-    }
-    
-    func errorMessageFromResponse(response: Response<AnyObject, NSError>) -> String {
-        var errorMessage = "Failure: "
-        if let urlResponse = response.response {
-            errorMessage += "\(urlResponse.statusCode)"
-        } else {
-            errorMessage += "Unknown Error"
-        }
-        return errorMessage
+        task.resume()
     }
 }
+
+    
+//        Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
+//            if response.result.isFailure {
+//                let message = self.errorMessageFromResponse(response)
+//                print("failure message: \(message)")
+//                completion(errorMessage: message, json: nil)
+//                return
+//            }
+//            
+//            guard let data = response.result.value as? [[String: AnyObject]] else {
+//                print("failure")
+//                return
+//            }
+//            
+//            print("data: \(data)")
+//            completion(errorMessage: nil, json: data)
+//        }
+//    }
+//    
+//    func errorMessageFromResponse(response: Response<AnyObject, NSError>) -> String {
+//        var errorMessage = "Failure: "
+//        if let urlResponse = response.response {
+//            errorMessage += "\(urlResponse.statusCode)"
+//        } else {
+//            errorMessage += "Unknown Error"
+//        }
+//        return errorMessage
+//    }
+//}

@@ -6,13 +6,11 @@
 //  Copyright © 2016 Code For Nashville. All rights reserved.
 //
 
-import Alamofire
+import Foundation
 
 class CustomAPIClient {
     
-    
     static let sharedInstance = CustomAPIClient()
-    
     private let baseURLString = "http://nashdrop.herokuapp.com/search/"
     
     func getCenters(material: String?, completion: (errorMessage: String?, json: [[String: AnyObject]]?) -> Void) {
@@ -21,32 +19,48 @@ class CustomAPIClient {
         if let m = material {
             urlString += m
         }
-        
-        Alamofire.request(.GET, urlString, parameters: nil).validate().responseJSON { response in
 
-            if response.result.isFailure {
-                let message = self.errorMessageFromResponse(response)
-                print("failure message: \(message)")
-                completion(errorMessage: message, json: nil)
-                return
-            }
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        
+        let task = session.dataTaskWithURL(NSURL(string: urlString)!) { (data, response, error) in
             
-            guard let data = response.result.value as? [[String: AnyObject]] else {
-                print("failure")
-                return
+            if let data = data {
+                let r = NSString(data: data, encoding: NSUTF8StringEncoding)
+                print(r)
             }
-            
-            completion(errorMessage: nil, json: data)
+            completion(errorMessage: nil, json: nil)
         }
+        task.resume()
     }
     
-    func errorMessageFromResponse(response: Response<AnyObject, NSError>) -> String {
-        var errorMessage = "Failure: "
-        if let urlResponse = response.response {
-            errorMessage += "\(urlResponse.statusCode)"
-        } else {
-            errorMessage += "Unknown Error"
-        }
-        return errorMessage
-    }
+    
+    
+//        Alamofire.request(.GET, urlString, parameters: nil).validate().responseJSON { response in
+//
+//            if response.result.isFailure {
+//                let message = self.errorMessageFromResponse(response)
+//                print("failure message: \(message)")
+//                completion(errorMessage: message, json: nil)
+//                return
+//            }
+//            
+//            guard let data = response.result.value as? [[String: AnyObject]] else {
+//                print("failure")
+//                return
+//            }
+//            
+//            completion(errorMessage: nil, json: data)
+//        }
+    
+    
+    
+//    func errorMessageFromResponse(response: Response<AnyObject, NSError>) -> String {
+//        var errorMessage = "Failure: "
+//        if let urlResponse = response.response {
+//            errorMessage += "\(urlResponse.statusCode)"
+//        } else {
+//            errorMessage += "Unknown Error"
+//        }
+//        return errorMessage
+//    }
 }
