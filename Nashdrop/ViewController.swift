@@ -89,20 +89,20 @@ extension SearchController: MaterialsDelegate {
         
         // TODO: Make an adapter or the client generic.
         if kUseGovAPI {
-            APIClient.sharedInstance.getCenters(material) { (errorMessage, json) in
-                if let e = errorMessage {
-                    print("Error fetching: \(e)")
-                } else {
-                    self.updateCenters(json!)
+            APIClient.sharedInstance.getCenters(material) { (json, errorMessage) in
+                guard errorMessage == nil else {
+                    print("Error fetching: \(errorMessage)")
+                    return
                 }
+                self.updateCenters(json!)
             }
         } else {
             CustomAPIClient.sharedInstance.getCenters(material){ (errorMessage, json) in
-                if let e = errorMessage {
-                    print("Error fetching: \(e)")
-                } else {
-                    self.updateCenters(json!)
+                guard errorMessage == nil else {
+                    print("Error fetching: \(errorMessage)")
+                    return
                 }
+                self.updateCenters(json!)
             }
         }
     }

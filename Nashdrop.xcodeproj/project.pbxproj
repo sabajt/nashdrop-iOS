@@ -164,6 +164,7 @@
 				TargetAttributes = {
 					33C2F9691D032D03005E1916 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 586EB56567;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -392,6 +393,7 @@
 			baseConfigurationReference = 42FF9A4A94E22577BB557C84 /* Pods-Nashdrop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 586EB56567;
 				INFOPLIST_FILE = Nashdrop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnsaba.Nashdrop;
@@ -405,6 +407,7 @@
 			baseConfigurationReference = DF160987DE0A4D6479CF11CE /* Pods-Nashdrop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 586EB56567;
 				INFOPLIST_FILE = Nashdrop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnsaba.Nashdrop;

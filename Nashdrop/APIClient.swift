@@ -10,14 +10,33 @@ import Foundation
 
 class APIClient {
 
-    
     static let sharedInstance = APIClient()
     
     private let appTokenField = "$$app_token"
     private let appToken = "SdrO1c71wKZPDVbTsomCAiv8H"
     private let baseURLString = "https://data.nashville.gov/resource/9d2e-48mm"
     
-    func getCenters(material: String?, completion: (errorMessage: String?, json: [[String: AnyObject]]?) -> Void) {
+    func validateJsonPayload(data: NSData?, response: NSURLResponse?, error: NSError?) -> (json: AnyObject?, errorMessage: String?) {
+        
+        guard error == nil else {
+            return (nil, "Error: \(error.debugDescription)")
+        }
+        guard let response = response as? NSHTTPURLResponse else {
+            return (nil, "No URL Response")
+        }
+        guard case 200...299 = response.statusCode else {
+            return (nil, "Invalid Response Code: \(response.statusCode)")
+        }
+        guard let data = data else {
+            return (nil, "No Data");
+        }
+        guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as! [[String: AnyObject]] else {
+            return (nil, "Unexpected Data Format")
+        }
+        return (json, nil)
+    }
+    
+    func getCenters(material: String?, completion: (json: [[String: AnyObject]]?, errorMessage: String?) -> Void) {
         
         let urlString = baseURLString
         var params = [appTokenField: appToken]
@@ -30,45 +49,18 @@ class APIClient {
         }
         
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        
-        let task = session.dataTaskWithURL(NSURL(string: urlString)!) { (data, response, error) in
+        session.dataTaskWithURL(NSURL(string: urlString)!) { (data, response, error) in
             
-            if let data = data {
-                let r = NSString(data: data, encoding: NSUTF8StringEncoding)
-                print(r)
-            }
-            completion(errorMessage: nil, json: nil)
-        }
-        task.resume()
+            let (json, errorMessage) = self.validateJsonPayload(data, response: response, error: error)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                guard let centers = json as? [[String: AnyObject]] else {
+                    let message = errorMessage ?? "Unexpected Data Format"
+                    completion(json: nil, errorMessage: message)
+                    return
+                }
+                completion(json: centers, errorMessage: nil)
+            })
+        }.resume()
     }
 }
-
-    
-//        Alamofire.request(.GET, urlString, parameters: params).validate().responseJSON { response in
-//            if response.result.isFailure {
-//                let message = self.errorMessageFromResponse(response)
-//                print("failure message: \(message)")
-//                completion(errorMessage: message, json: nil)
-//                return
-//            }
-//            
-//            guard let data = response.result.value as? [[String: AnyObject]] else {
-//                print("failure")
-//                return
-//            }
-//            
-//            print("data: \(data)")
-//            completion(errorMessage: nil, json: data)
-//        }
-//    }
-//    
-//    func errorMessageFromResponse(response: Response<AnyObject, NSError>) -> String {
-//        var errorMessage = "Failure: "
-//        if let urlResponse = response.response {
-//            errorMessage += "\(urlResponse.statusCode)"
-//        } else {
-//            errorMessage += "Unknown Error"
-//        }
-//        return errorMessage
-//    }
-//}
